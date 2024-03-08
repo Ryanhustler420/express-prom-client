@@ -33,6 +33,11 @@ app.get('/metrics', async (req, res) => {
   res.end(await registry.metrics());
 });
 
+app.get('/nested/metrics', async (req, res) => {
+  res.set('Content-Type', registry.contentType);
+  res.end(await registry.metrics());
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("App is running");
